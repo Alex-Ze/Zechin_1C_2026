@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hardware_20connection_0',['Hardware Connection',['../index.html#hardConn',1,'']]]
+  ['general_20description_0',['General Description',['../index.html#genDesc',1,'']]],
+  ['guia_201_20ejercicio_206_1',['Guia 1 - Ejercicio 6',['../index.html',1,'']]]
 ];

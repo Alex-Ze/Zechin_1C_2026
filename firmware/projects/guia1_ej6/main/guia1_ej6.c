@@ -1,8 +1,8 @@
 /*! @mainpage Guia 1 - Ejercicio 6
  *
- * @section Panel_LCD 
+ * @section genDesc General Description 
  *
- * This section describes how the program works.
+ * El progrma convierte un nuemero de 3 digitos a un formato BCD y lo muestra en un panel LCD de 7 segmentos utilizando un conversor de BCD a 7 segmentos y un selector de panel LCD.
  *
  * <a href="https://drive.google.com/...">Operation Example</a>
  *
@@ -10,13 +10,16 @@
  *
  * |    Peripheral   |   ESP32       |
  * |:---------------:|:--------------|
- * |    D1 (Data)    |   GPIO_20     |
- * |    D2 (Data)    |   GPIO_21     |
- * |    D3 (Data)    |   GPIO_22     |
- * |    D4 (Data)    |   GPIO_23     |
- * |    SEL_1 (D1)   |   GPIO_19     |
- * |    SEL_2 (D2)   |   GPIO_18     |
- * |    SEL_3 (D3)   |   GPIO_9      |
+ * |    D1     |   GPIO_20     |
+ * |    D2     |   GPIO_21     |
+ * |    D3     |   GPIO_22     |
+ * |    D4     |   GPIO_23     |
+ * |    SEL_1  |   GPIO_19     |
+ * |    SEL_2  |   GPIO_18     |
+ * |    SEL_3  |   GPIO_9      |
+ * |    +5V   |   +5V      |
+ * |    GND   |   GND      |
+ * 
  *
  *
  * @section changelog Changelog
@@ -41,6 +44,14 @@
 /*==================[internal data definition]===============================*/
 
 // --------------------------------------------------------------------------
+/**
+ * @brief Convierte un numero entero sin signo de 32 bits a un formato BCD y lo almacena en un arreglo de enteros sin signo de 8 bits
+ * @param data Numero entero sin signo de 32 bits a convertir
+ * @param digits Cantidad de digitos a convertir
+ * @param bcd_number Puntero a un arreglo de enteros sin signo de 8 bits donde se almacenara el resultado
+ * @return 0 si la conversion es exitosa, -1 en caso de error
+ */
+
 int8_t  convertToBcdArray (uint32_t data, uint8_t digits, uint8_t * bcd_number)
 // Recibe un numero entero sin signo de 32 bits, la cantidad de digitos a convertir y un puntero a un arreglo de enteros sin signo de 8 bits donde se almacenara el resultado
 {
@@ -54,6 +65,10 @@ int8_t  convertToBcdArray (uint32_t data, uint8_t digits, uint8_t * bcd_number)
 	return 0;
 }
 
+/**
+ * @brief la estructura gpioConf_t hace magia 
+ */
+
 typedef struct
 {
 	gpio_t pin;			/*!< GPIO pin number */
@@ -62,6 +77,12 @@ typedef struct
 
 // --------------------------------------------------------------------------
 // La funcion recibe un vector con los pines y un numero de 4 bits, y activa o desactiva los GPIO correspondientes a cada bit del numero
+/**
+ * @brief La funcion recibe un vector con los pines y un numero de 4 bits, y activa o desactiva los GPIO correspondientes a cada bit del numero
+ * @param gpio_conf Vector con los pines GPIO
+ * @param numero_vector Numero de 4 bits
+ * @return Nada (es un void)
+ */
 
 void gpio_bcd(gpioConf_t *gpio_conf, uint8_t numero_vector)
 {
@@ -82,8 +103,14 @@ void gpio_bcd(gpioConf_t *gpio_conf, uint8_t numero_vector)
 }
 
 // --------------------------------------------------------------------------
-// La funcion recibe un vector con los pines y un numero con el tiempo entre pin y pin
-// El objetivo de esta funcion es de actvar cada uno de los paneles de forma secuencial
+/** 
+ * La funcion recibe un vector con los pines y un numero con el tiempo entre pin y pin
+ * El objetivo de esta funcion es de actvar cada uno de los paneles de forma secuencial
+ * @param gpio_conf Vector con los pines GPIO
+ * @param gpio_selector Vector con los pines de seleccion
+ * @param numero Numero a mostrar en el panel LCD
+ * @return NONE (es un void)
+ */
 void mostrar_dato_en_display(gpioConf_t *gpio_conf, gpioConf_t *gpio_selector, uint32_t numero){
 	// -----------------1---------------------------
 	// Convierte el numero para manejar en el BCD

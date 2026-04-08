@@ -100,9 +100,9 @@ $(function(){initNavTree('index.html','',''); });
   <div class="headertitle"><div class="title">Guia 1 - Ejercicio 6 </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1 class="doxsection"><a class="anchor" id="Panel_LCD"></a>
-Panel_LCD</h1>
-<p>This section describes how the program works.</p>
+<div class="textblock"><h1 class="doxsection"><a class="anchor" id="genDesc"></a>
+General Description</h1>
+<p>El progrma convierte un nuemero de 3 digitos a un formato BCD y lo muestra en un panel LCD de 7 segmentos utilizando un conversor de BCD a 7 segmentos y un selector de panel LCD.</p>
 <p><a href="https://drive.google.com/...">Operation Example</a></p>
 <h1 class="doxsection"><a class="anchor" id="hardConn"></a>
 Hardware Connection</h1>
@@ -110,19 +110,23 @@ Hardware Connection</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadCenter">Peripheral  </th><th class="markdownTableHeadLeft">ESP32  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">D1 (Data)  </td><td class="markdownTableBodyLeft">GPIO_20  </td></tr>
+<td class="markdownTableBodyCenter">D1  </td><td class="markdownTableBodyLeft">GPIO_20  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">D2 (Data)  </td><td class="markdownTableBodyLeft">GPIO_21  </td></tr>
+<td class="markdownTableBodyCenter">D2  </td><td class="markdownTableBodyLeft">GPIO_21  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">D3 (Data)  </td><td class="markdownTableBodyLeft">GPIO_22  </td></tr>
+<td class="markdownTableBodyCenter">D3  </td><td class="markdownTableBodyLeft">GPIO_22  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">D4 (Data)  </td><td class="markdownTableBodyLeft">GPIO_23  </td></tr>
+<td class="markdownTableBodyCenter">D4  </td><td class="markdownTableBodyLeft">GPIO_23  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">SEL_1 (D1)  </td><td class="markdownTableBodyLeft">GPIO_19  </td></tr>
+<td class="markdownTableBodyCenter">SEL_1  </td><td class="markdownTableBodyLeft">GPIO_19  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">SEL_2 (D2)  </td><td class="markdownTableBodyLeft">GPIO_18  </td></tr>
+<td class="markdownTableBodyCenter">SEL_2  </td><td class="markdownTableBodyLeft">GPIO_18  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">SEL_3 (D3)  </td><td class="markdownTableBodyLeft">GPIO_9  </td></tr>
+<td class="markdownTableBodyCenter">SEL_3  </td><td class="markdownTableBodyLeft">GPIO_9  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">+5V  </td><td class="markdownTableBodyLeft">+5V  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">GND  </td><td class="markdownTableBodyLeft">GND  </td></tr>
 </table>
 <h1 class="doxsection"><a class="anchor" id="changelog"></a>
 Changelog</h1>
